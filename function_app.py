@@ -132,7 +132,9 @@ def get_azure_msi_token() -> str:
     resp.raise_for_status()
 
     jsonData = resp.json()
-    logger.info("Successfully obtained Azure OIDC token", jsonData)
+    
+    # print response for debugging
+    logger.info(f"Managed Identity token response: {json.dumps(jsonData)}")
 
     return jsonData["access_token"]
 
