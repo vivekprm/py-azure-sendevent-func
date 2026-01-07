@@ -69,6 +69,7 @@ def EventGridTrigger(azeventgrid: func.EventGridEvent):
     try:
         # Get Azure-issued OIDC token
         oidc_token = get_azure_msi_token()
+        logger.info("Successfully obtained Azure OIDC token", oidc_token)
         claims = jwt.decode(
             oidc_token,
             options={"verify_signature": False}
